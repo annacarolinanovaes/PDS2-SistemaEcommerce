@@ -11,9 +11,10 @@ import javax.persistence.Embeddable;
 public class DetalhePedidoPK implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
+
 	@Column(name="NR_PEDIDO")
 	private Integer numeroPedido;
-	
+
 	@Column(name="CD_PRODUTO")
 	private Integer codigoProduto;
 
