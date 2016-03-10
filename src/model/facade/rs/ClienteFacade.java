@@ -14,6 +14,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 
+import model.dao.ClienteDao;
 import model.domain.Cliente;
 import util.ClienteNaoEncontradoException;
 
@@ -25,31 +26,26 @@ import util.ClienteNaoEncontradoException;
 public class ClienteFacade {
 	
 	private static List<Cliente> clientes = new ArrayList<Cliente>();
+	private ClienteDao clienteDao;
 	
-	static {
-		clientes.add(new Cliente(1,"carlos","carlos@gmail.com"));
-		clientes.add(new Cliente(2,"fulano","fulano@gmail.com"));
-	}
 
-	@POST
+/*	@POST
 	public Cliente salvar(Cliente cliente) {
 		clientes.add(cliente);
 		return cliente;
-	}
+	}*/
 	
 	@GET
 	public List<Cliente> getClientes() {
-		return clientes;
+		return clienteDao.getClientes(new Cliente());
 	}
 	
 	@GET
 	@Path("/{codigo}")
-	public Cliente getClientes(@PathParam("codigo") Integer codigo) {
-		try {			
-			return getCliente(codigo);
-		} catch(ClienteNaoEncontradoException e) {
-			throw new WebApplicationException(404);
-		}		
+	public List<Cliente> getClientes(@PathParam("codigo") Integer codigo) {
+		Cliente cliente = new Cliente();
+		cliente.setCodigo(codigo);
+		return clienteDao.getClientes(cliente);
 	}
 	
 	@PUT
