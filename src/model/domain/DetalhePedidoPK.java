@@ -6,23 +6,22 @@ import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
-//Quando tem uma classe que faz parte de outra classe que é uma Entity
-//
-public class DetalhePedidoPK implements Serializable{
+public class DetalhePedidoPK implements Serializable {
 	
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
-
+	
 	@Column(name="NR_PEDIDO")
 	private Integer numeroPedido;
-
+	
 	@Column(name="CD_PRODUTO")
 	private Integer codigoProduto;
 
-
-	public DetalhePedidoPK(){
-		
+	public DetalhePedidoPK() {
 	}
-	
+
 	public Integer getNumeroPedido() {
 		return numeroPedido;
 	}
@@ -70,7 +69,6 @@ public class DetalhePedidoPK implements Serializable{
 		return true;
 	}
 
+	
 
-	
-	
 }

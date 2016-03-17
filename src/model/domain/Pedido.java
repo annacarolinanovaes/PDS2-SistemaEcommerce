@@ -13,44 +13,53 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.xml.bind.annotation.XmlRootElement;
-
 
 @Entity
-@Table(name="tb_pedido")
-@XmlRootElement
-public class Pedido implements Serializable{
+@Table(name="TB_PEDIDO")
+public class Pedido implements Serializable {
 	
-	private static final long serialVersionUID = 1L;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4291797618210467834L;
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="NR_PEDIDO")
 	private Integer numero;
 	
-	//Vários pedidos para um Cliente
 	@ManyToOne
-	@JoinColumn(name="pedidos")
-	@Column(name="CD_CLIENTE")
+	@JoinColumn(name="CD_CLIENTE",referencedColumnName="CD_CLIENTE")
 	private Cliente cliente;
 	
-	@Column(name="DT_PEDIDO")
 	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name="DT_PEDIDO")
 	private Date data;
-	
-	public Pedido(){
-		super();
+
+	public Pedido() {
 	}
-	
-	public Integer getCodPedido() {
+
+	public Integer getNumero() {
 		return numero;
 	}
-	public void setCodPedido(Integer numero) {
+
+	public void setNumero(Integer numero) {
 		this.numero = numero;
 	}
-	public Date getDtPedido() {
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+	public Date getData() {
 		return data;
 	}
-	public void setDtPedido(Date data) {
+
+	public void setData(Date data) {
 		this.data = data;
 	}
 
@@ -78,14 +87,6 @@ public class Pedido implements Serializable{
 			return false;
 		return true;
 	}
+	
 
-	@Override
-	public String toString() {
-		return "Pedido [codPedido=" + numero + ", cliente=" + cliente + ", dtPedido=" + data + "]";
-	}
-	
-	
-	
 }
-
-

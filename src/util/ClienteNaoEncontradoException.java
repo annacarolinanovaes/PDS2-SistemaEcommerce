@@ -2,7 +2,9 @@ package util;
 
 @SuppressWarnings("serial")
 public class ClienteNaoEncontradoException extends Exception {
-	public ClienteNaoEncontradoException(Integer codigo){
+	
+	public ClienteNaoEncontradoException(Integer codigo) {
 		super(codigo.toString());
 	}
+
 }

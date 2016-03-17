@@ -5,75 +5,75 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="tb_categoria")
-public class Categoria implements Serializable{
+@Table(name="TB_CATEGORIA")
+public class Categoria implements Serializable {
 	
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="CD_CATEGORIA")
-	private Integer codCategoria;
+	private Integer codigo;
 	
 	@OneToMany(mappedBy="categoria")
 	private List<Produto> produtos;
 	
 	@Column(name="NM_CATEGORIA")
-	private String nomeCategoria;
+	private String nome;
 	
 	@Column(name="DS_CATEGORIA")
-	private String descricaoCategoria;
+	private String descricao;
 	
-	public Categoria(){
+	
+
+	public Categoria() {
 		super();
 	}
-	
-	public Categoria(Integer codCategoria, String nomeCategoria, String descricaoCategoria) {
-		super();
-		this.codCategoria = codCategoria;
-		this.nomeCategoria = nomeCategoria;
-		this.descricaoCategoria = descricaoCategoria;
+
+	public Integer getCodigo() {
+		return codigo;
 	}
 
-	public Integer getCodCategoria() {
-		return codCategoria;
+	public void setCodigo(Integer codigo) {
+		this.codigo = codigo;
 	}
 
-	public void setCodCategoria(Integer codCategoria) {
-		this.codCategoria = codCategoria;
+	public String getNome() {
+		return nome;
 	}
 
-	public String getNomeCategoria() {
-		return nomeCategoria;
+	public List<Produto> getProdutos() {
+		return produtos;
 	}
 
-	public void setNomeCategoria(String nomeCategoria) {
-		this.nomeCategoria = nomeCategoria;
+	public void setProdutos(List<Produto> produtos) {
+		this.produtos = produtos;
 	}
 
-	public String getDescricaoCategoria() {
-		return descricaoCategoria;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
-	public void setDescricaoCategoria(String descricaoCategoria) {
-		this.descricaoCategoria = descricaoCategoria;
+	public String getDescricao() {
+		return descricao;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((codCategoria == null) ? 0 : codCategoria.hashCode());
+		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
 		return result;
 	}
 
@@ -86,14 +86,14 @@ public class Categoria implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Categoria other = (Categoria) obj;
-		if (codCategoria == null) {
-			if (other.codCategoria != null)
+		if (codigo == null) {
+			if (other.codigo != null)
 				return false;
-		} else if (!codCategoria.equals(other.codCategoria))
+		} else if (!codigo.equals(other.codigo))
 			return false;
 		return true;
 	}
 	
 	
-
+	
 }

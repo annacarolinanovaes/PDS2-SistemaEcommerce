@@ -9,22 +9,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+@SuppressWarnings("serial")
 @Entity
-@Table(name="tb_detalhe_pedido")
-public class DetalhePedido implements Serializable{
-	
-	private static final long serialVersionUID = 1L;
+@Table(name="TB_DETALHE_PEDIDO")
+public class DetalhePedido implements Serializable {
 	
 	@EmbeddedId
 	private DetalhePedidoPK detalhePedidoPK;
-
-	@ManyToOne
-	@JoinColumn(name="NR_PEDIDO", referencedColumnName="NR_PEDIDO", insertable=false, updatable=false)
-	private Pedido pedido;
-
-	@ManyToOne
-	@JoinColumn(name="NR_PRODUTO", referencedColumnName="NR_PRODUTO", insertable=false, updatable=false)
-	private Produto produto;
 	
 	@Column(name="VL_PRECO")
 	private Double preco;
@@ -34,7 +25,17 @@ public class DetalhePedido implements Serializable{
 	
 	@Column(name="VL_DESCONTO")
 	private Double desconto;
-		
+	
+	@ManyToOne
+	@JoinColumn(name="NR_PEDIDO",referencedColumnName="NR_PEDIDO",
+	insertable=false,updatable=false)
+	private Pedido pedido;
+
+	@ManyToOne
+	@JoinColumn(name="CD_PRODUTO",referencedColumnName="CD_PRODUTO",
+			insertable=false,updatable=false)
+	private Produto produto;
+
 	public Double getPreco() {
 		return preco;
 	}
@@ -57,10 +58,6 @@ public class DetalhePedido implements Serializable{
 
 	public void setDesconto(Double desconto) {
 		this.desconto = desconto;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
 	}
 	
 	

@@ -10,10 +10,14 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="tb_produto")
-public class Produto implements Serializable{
+@Table(name="TB_PRODUTO")
+public class Produto implements Serializable {
 	
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
+
 	@Id
 	@Column(name="CD_PRODUTO")
 	private Integer codigo;
@@ -22,17 +26,68 @@ public class Produto implements Serializable{
 	private String nome;
 	
 	@ManyToOne
-	@JoinColumn(name="CD_CATEGORIA", referencedColumnName="CD_CATEGORIA")
+	@JoinColumn(name="CD_CATEGORIA",referencedColumnName="CD_CATEGORIA")
 	private Categoria categoria;
-	
-	@Column(name="CD_PRODUTO")
-	private String descricao;
 	
 	@Column(name="VL_PRECO")
 	private Double preco;
 	
-	public Produto(){
+	@Column(name="QT_ESTOQUE")
+	private Integer quantidadeEstoque;
+	
+	@Column(name="NM_IMAGEM")
+	private String nomeImagem;
+
+	public Produto() {
 		super();
+	}
+
+	public Integer getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(Integer codigo) {
+		this.codigo = codigo;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+
+	public Double getPreco() {
+		return preco;
+	}
+
+	public void setPreco(Double preco) {
+		this.preco = preco;
+	}
+
+	public Integer getQuantidadeEstoque() {
+		return quantidadeEstoque;
+	}
+
+	public void setQuantidadeEstoque(Integer quantidadeEstoque) {
+		this.quantidadeEstoque = quantidadeEstoque;
+	}
+
+	public String getNomeImagem() {
+		return nomeImagem;
+	}
+
+	public void setNomeImagem(String nomeImagem) {
+		this.nomeImagem = nomeImagem;
 	}
 
 	@Override
@@ -59,7 +114,5 @@ public class Produto implements Serializable{
 			return false;
 		return true;
 	}
-	
-	
 	
 }
